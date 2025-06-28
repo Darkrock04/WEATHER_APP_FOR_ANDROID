@@ -2,7 +2,7 @@ name: Build and Deploy to Firebase
 
 on:
   push:
-    branches: [ main ]
+    branches: [ main, feature/release-1 ]
   pull_request:
     branches: [ main ]
 
