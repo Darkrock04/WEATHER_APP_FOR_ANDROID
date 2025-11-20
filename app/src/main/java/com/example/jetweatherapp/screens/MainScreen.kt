@@ -57,6 +57,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.jetweatherapp.R
 import com.example.jetweatherapp.components.ForecastCard
+import com.example.jetweatherapp.components.AirPollutionCard
 import com.example.jetweatherapp.components.HorizontalForecastListOf24Hours
 import com.example.jetweatherapp.components.LocationPermissionTextProvider
 import com.example.jetweatherapp.components.LocationSearchBar
@@ -68,6 +69,7 @@ import com.example.jetweatherapp.components.WeatherExpandView
 import com.example.jetweatherapp.components.WeatherGrid
 import com.example.jetweatherapp.components.WeatherViewPager
 import com.example.jetweatherapp.model.CurrentWeather
+import com.example.jetweatherapp.model.AirPollutionResponse
 import com.example.jetweatherapp.model.WeatherData
 import com.example.jetweatherapp.model.WeatherDataItem
 import com.example.jetweatherapp.navigation.WeatherScreens
@@ -93,6 +95,7 @@ fun MainScreen(
     val location = locationViewModel.currentLocationFlow.collectAsState().value
     val weather = mainScreenViewModel.currentWeather.collectAsState().value
     val forecast = mainScreenViewModel.forecast.collectAsState().value
+    val airPollution = mainScreenViewModel.airPollution.collectAsState().value
     val temperatureUnit = mainScreenViewModel.temperatureUnit.collectAsState().value
     val searchActive = remember {
         mutableStateOf(false)
@@ -288,7 +291,7 @@ fun MainScreen(
                             .wrapContentHeight(),
                         horizontalAlignment = Alignment.CenterHorizontally
                     ) {
-                        MainContent(weather.data!!, forecast.data!!)
+                        MainContent(weather.data!!, forecast.data!!, airPollution.data)
                     }
                 }
             }
@@ -339,7 +342,7 @@ fun MainScreen(
 }
 
 @Composable
-fun MainContent(currentWeather: CurrentWeather, forecastData: WeatherData) {
+fun MainContent(currentWeather: CurrentWeather, forecastData: WeatherData, airPollution: AirPollutionResponse?) {
     TemperatureTextMain(currentWeather)
     WeatherDescription(currentWeather = currentWeather)
     Spacer(modifier = Modifier.height(70.dp))
@@ -351,6 +354,10 @@ fun MainContent(currentWeather: CurrentWeather, forecastData: WeatherData) {
     Spacer(modifier = Modifier.height(10.dp))
     ForecastCard(forecastData = forecastData)
     Spacer(modifier = Modifier.height(10.dp))
+    if (airPollution != null) {
+        AirPollutionCard(airPollution = airPollution)
+        Spacer(modifier = Modifier.height(10.dp))
+    }
     WeatherGrid(data = getWeatherGridData(currentWeather = currentWeather))
     Spacer(modifier = Modifier.height(120.dp))
 }

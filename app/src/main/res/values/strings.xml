@@ -1,3 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    strings.xml - String resources for the Weather App
+    
+    This file contains all the string resources used throughout the app.
+    It provides a centralized location for managing text content and
+    enables easy localization for different languages.
+    
+    Purpose:
+    - Centralize all text content
+    - Enable easy localization
+    - Provide consistent text across the app
+    - Support multiple languages
+    
+    Key Features:
+    - App name and branding
+    - User interface text
+    - Error messages
+    - Localization support
+    
+    Why use string resources:
+    - Enables easy text updates
+    - Supports multiple languages
+    - Prevents hardcoded strings
+    - Improves maintainability
+-->
 <resources>
+    <!-- App Name - Displayed in launcher and app settings -->
+    <!-- This is the name that appears under the app icon in the launcher -->
     <string name="app_name">JetWeatherApp</string>
 </resources>
