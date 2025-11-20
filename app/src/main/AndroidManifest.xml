@@ -1,12 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+    AndroidManifest.xml - Main configuration file for the Weather App
+    
+    This file defines the essential information about the app that the Android system
+    needs to know before it can run any of the app's code. It declares permissions,
+    activities, and other app components.
+    
+    Purpose:
+    - Declare app permissions and capabilities
+    - Define app components (activities, services, etc.)
+    - Set app metadata and configuration
+    - Specify app entry points and intents
+    
+    Key Features:
+    - Permission declarations for network and location access
+    - Application configuration and metadata
+    - Main activity declaration with launcher intent
+    - Backup and data extraction rules
+-->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <!--
+        Permission Declarations
+        
+        These permissions define what the app can access on the device.
+        They must be declared here before they can be requested at runtime.
+    -->
+    
+    <!-- Internet Permission - Required for API calls -->
+    <!-- This permission allows the app to access the internet for weather data -->
     <uses-permission android:name="android.permission.INTERNET"/>
+    
+    <!-- Fine Location Permission - Required for precise location -->
+    <!-- This permission allows the app to access GPS and precise location data -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    
+    <!-- Coarse Location Permission - Required for approximate location -->
+    <!-- This permission allows the app to access network-based location data -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    
+    <!-- Background Location Permission - Required for location in background -->
+    <!-- This permission allows the app to access location when not in foreground -->
     <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION"/>
 
+    <!--
+        Application Configuration
+        
+        This section defines the main application settings and components.
+        It includes the app name, theme, icon, and main activity.
+    -->
     <application
         android:name=".WeatherApplication"
         android:allowBackup="true"
@@ -18,10 +61,24 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.JetWeatherApp"
         tools:targetApi="31">
+        
+        <!--
+            Main Activity Declaration
+            
+            This activity serves as the entry point for the app.
+            It's launched when the user taps the app icon.
+        -->
         <activity
             android:name=".MainActivity"
             android:exported="true"
             android:theme="@style/Theme.JetWeatherApp">
+            
+            <!--
+                Intent Filter for Launcher
+                
+                This intent filter makes the activity the main entry point
+                for the app when launched from the launcher.
+            -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

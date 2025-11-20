@@ -36,6 +36,18 @@ jobs:
     - name: Build APK
       run: ./gradlew assembleDebug
       
+    - name: Create Release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: v${{ github.run_number }}
+        release_name: Release v${{ github.run_number }}
+        draft: false
+        prerelease: false
+      if: github.ref == 'refs/heads/main'
+      
     - name: Upload APK to GitHub Releases
       uses: actions/upload-release-asset@v1
       env:

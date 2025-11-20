@@ -1,10 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+    colors.xml - Color resources for the Weather App
+    
+    This file defines all the colors used throughout the app.
+    It provides a centralized location for managing color schemes
+    and enables easy theme customization and dark mode support.
+    
+    Purpose:
+    - Centralize all color definitions
+    - Enable easy theme customization
+    - Support light and dark themes
+    - Provide consistent color usage
+    
+    Key Features:
+    - Material Design color palette
+    - Light and dark theme support
+    - Consistent color usage
+    - Easy theme customization
+    
+    Why use color resources:
+    - Enables easy theme changes
+    - Supports dark mode
+    - Prevents hardcoded colors
+    - Improves maintainability
+-->
 <resources>
+    <!-- Material Design Purple Colors -->
+    <!-- These colors follow Material Design guidelines for a modern look -->
+    
+    <!-- Purple 200 - Light purple for backgrounds and accents -->
+    <!-- Used for light backgrounds and subtle accents -->
     <color name="purple_200">#FFBB86FC</color>
+    
+    <!-- Purple 500 - Primary purple for main elements -->
+    <!-- Used for primary buttons, links, and important elements -->
     <color name="purple_500">#FF6200EE</color>
+    
+    <!-- Purple 700 - Dark purple for emphasis -->
+    <!-- Used for dark accents and emphasis elements -->
     <color name="purple_700">#FF3700B3</color>
+    
+    <!-- Material Design Teal Colors -->
+    <!-- These colors provide a complementary accent to purple -->
+    
+    <!-- Teal 200 - Light teal for backgrounds and accents -->
+    <!-- Used for light backgrounds and subtle accents -->
     <color name="teal_200">#FF03DAC5</color>
+    
+    <!-- Teal 700 - Dark teal for emphasis -->
+    <!-- Used for dark accents and emphasis elements -->
     <color name="teal_700">#FF018786</color>
+    
+    <!-- Basic Colors -->
+    <!-- These are fundamental colors used throughout the app -->
+    
+    <!-- Black - Pure black color -->
+    <!-- Used for text, borders, and dark elements -->
     <color name="black">#FF000000</color>
+    
+    <!-- White - Pure white color -->
+    <!-- Used for backgrounds, text, and light elements -->
     <color name="white">#FFFFFFFF</color>
 </resources>

@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.jetweatherapp.data.DataOrException
 import com.example.jetweatherapp.model.CurrentWeather
+import com.example.jetweatherapp.model.AirPollutionResponse
 import com.example.jetweatherapp.model.LocationDataItem
 import com.example.jetweatherapp.model.WeatherData
 import com.example.jetweatherapp.repository.GeocodingRepository
@@ -38,6 +39,9 @@ class MainScreenViewModel @Inject constructor(
     val coordinates: StateFlow<DataOrException<ArrayList<LocationDataItem>, Boolean, Exception>> =
         _coordinates.asStateFlow()
 
+    private val _airPollution = MutableStateFlow(DataOrException<AirPollutionResponse, Boolean, Exception>())
+    val airPollution: StateFlow<DataOrException<AirPollutionResponse, Boolean, Exception>> = _airPollution.asStateFlow()
+
     private val _temperatureUnit = MutableStateFlow("metric")
     val temperatureUnit: StateFlow<String> = _temperatureUnit.asStateFlow()
 
@@ -48,6 +52,18 @@ class MainScreenViewModel @Inject constructor(
             _currentWeather.emit(result)
             if (result.data != null) {
                 _currentWeather.emit(result.copy(loading = false))
+            }
+            getAirPollution(latitude, longitude)
+        }
+    }
+
+    fun getAirPollution(latitude: Double, longitude: Double) {
+        viewModelScope.launch {
+            _airPollution.emit(DataOrException(loading = true))
+            val result = repository.getAirPollution(latitude, longitude)
+            _airPollution.emit(result)
+            if (result.data != null) {
+                _airPollution.emit(result.copy(loading = false))
             }
         }
     }
